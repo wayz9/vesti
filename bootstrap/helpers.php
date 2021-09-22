@@ -98,7 +98,7 @@ function config($key, $value): string
         : 'Undefined';
 }
 
-function session() 
+function session(): Session
 {
     return new Session;
 }
@@ -108,12 +108,12 @@ function partials($file)
     require_once "../resources/views/partials/{$file}.php";
 }
 
-function prefix($array)
+function prefix($array): string
 {
     return substr_replace($array, ':', 0, 0);
 }
 
-function map($array)
+function map($array): array
 {
     $res = array_map(function ($field) {
         return "{$field} = :{$field}";
