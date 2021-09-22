@@ -1,7 +1,7 @@
 ## Vesti
 
 
-### Instalation
+### Installation
 1. Clone or download the repo.
 2. Install database schema from ```database/db.sql``` locally.
 3. Configure ```config/config.php```
