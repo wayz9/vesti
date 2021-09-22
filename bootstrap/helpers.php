@@ -97,3 +97,13 @@ function config($key, $value): string
         ? $config[$key][$value]
         : 'Undefined';
 }
+
+function session() 
+{
+    return new Session;
+}
+
+function partials($file)
+{
+    require_once "../resources/views/partials/{$file}.php";
+}
