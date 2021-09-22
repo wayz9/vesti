@@ -108,12 +108,12 @@ function partials($file)
     require_once "../resources/views/partials/{$file}.php";
 }
 
-function prefix($array): string
+function prefix($array)
 {
     return substr_replace($array, ':', 0, 0);
 }
 
-function map($array): array
+function map($array)
 {
     $res = array_map(function ($field) {
         return "{$field} = :{$field}";
