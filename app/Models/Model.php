@@ -93,7 +93,7 @@ class Model
 
     public function getAllRelated($relation): array
     {
-        $this->db->query("SELECT email FROM {$this->table}_{$relation}");
+        $this->db->query("SELECT * FROM {$this->table}_{$relation}");
         $items = $this->db->fetchAll();
 
         return $items ? $items : [];

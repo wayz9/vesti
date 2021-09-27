@@ -4,17 +4,18 @@
             <h1 class="text-3xl text-28 font-bold">All Posts</h1>
         </div>
         <div class="mt-4 flex flex-col gap-y-4">
-            <?php
+        <?php
             foreach ($data['posts'] as $post) {
                 printf('<div class="py-3.5 px-4 bg-gray-50 rounded-xl">
                 <a href="/post/%d" class="font-semibold text-lg hover:text-indigo-600">%s</a>
                 <p class="mt-1.5 line-clamp-2 text-gray-600">%s</p>
-                <div class="mt-2.5 flex items-center justify-end">
+                <div class="mt-2.5 flex items-center justify-between">
+                    <a href="/admin/post/edit/%d" class="text-sm text-indigo-500">Edit</a>
                     <span class="text-sm italic text-gray-500">%s</span>
                 </div>
-                </div>', $post['id'], $post['title'], $post['description'], date('d M Y', strtotime($post['created_at'])));
+                </div>', $post['id'], $post['title'], $post['description'], $post['id'], date('d M Y', strtotime($post['created_at'])));
             }
-            ?>
+        ?>
         </div>
     </div>
     <div class="flex flex-col gap-y-10">
