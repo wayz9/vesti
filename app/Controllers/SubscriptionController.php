@@ -11,12 +11,30 @@ use App\Services\Validator;
 
 class SubscriptionController extends Controller
 {
+    public Post $post;
+    public Category $category;
+
+    public function __construct() {
+        $this->post = new Post();
+        $this->category = new Category();
+    }
+
     public function index()
     {
-        $postSubscribers = (new Post)->getAllRelated('subscription');
-        $categorySubscribers = (new Category)->getAllRelated('subscription');
+        $posts = $this->post->all();
+        $categories = $this->category->all();
 
-        return parent::view('admin/subscribers', ['postSubscribers' => $postSubscribers, 'categorySubscribers' => $categorySubscribers]);
+        $postSubscribers = $this->post->getAllRelated('subscription');
+        $categorySubscribers = $this->category->getAllRelated('subscription');
+
+        return parent::view('admin/subscribers', 
+            [
+                'postSubscribers' => $postSubscribers, 
+                'categorySubscribers' => $categorySubscribers,
+                'posts' => $posts,
+                'categories' => $categories
+            ]
+        );
     }
 
     public function subscribeToCategory()

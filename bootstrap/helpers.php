@@ -121,3 +121,9 @@ function map($array)
 
     return $res;
 }
+
+function filter($array, $field, $value){
+    return array_filter($array, function($key) use($field, $value){
+        return $key[$field] == $value;
+    });
+}
